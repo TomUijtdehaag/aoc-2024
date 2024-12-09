@@ -4,7 +4,7 @@ import (
 	"testing"
 )
 
-var test_input = `7 6 4 2 1
+var testInput = `7 6 4 2 1
 1 2 7 8 9
 9 7 6 2 1
 1 3 2 4 5
@@ -13,7 +13,7 @@ var test_input = `7 6 4 2 1
 
 func TestPart1(t *testing.T) {
 	expected := 2
-	data := parseInput(test_input)
+	data := parseInput(testInput)
 
 	result := part1(data)
 
@@ -40,7 +40,7 @@ func TestRemoveElement(t *testing.T) {
 func TestPart2(t *testing.T) {
 	expected := 4
 
-	data := parseInput(test_input)
+	data := parseInput(testInput)
 
 	result := part2(data)
 
