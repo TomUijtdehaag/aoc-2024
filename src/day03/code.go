@@ -6,15 +6,27 @@ import (
 	"regexp"
 )
 
-func parseInput(input string) [][]int {
-	re := regexp.MustCompile(`mul\((\d{1,3}),(\d{1,3})\)`)
+func parseInput(input string, do bool) [][]int {
+	re := regexp.MustCompile(`mul\((\d{1,3}),(\d{1,3})\)|do\(\)|don't\(\)`)
 
 	output := [][]int{}
+	mult := true
 
 	for _, match := range re.FindAllStringSubmatch(input, -1) {
-		left, right := match[1], match[2]
+		switch match[0] {
+		case "do()":
+			mult = true
+		case "don't()":
+			mult = false
+		default:
+			left, right := match[1], match[2]
+			if do && !mult {
+				continue
+			} else {
+				output = append(output, []int{utils.ToInt(left), utils.ToInt(right)})
+			}
+		}
 
-		output = append(output, []int{utils.ToInt(left), utils.ToInt(right)})
 	}
 	return output
 }
@@ -28,18 +40,12 @@ func multiplyPairs(pairs [][]int) int {
 }
 
 func part1(input string) int {
-	pairs := parseInput(input)
+	pairs := parseInput(input, false)
 	return multiplyPairs(pairs)
 }
 
-func cleanInput(input string) string {
-	re := regexp.MustCompile(`don't\(\).*?do\(\)`)
-	return re.ReplaceAllString(input+"do()", "")
-}
-
 func part2(input string) int {
-	input = cleanInput(input)
-	pairs := parseInput(input)
+	pairs := parseInput(input, true)
 	return multiplyPairs(pairs)
 }
 
