@@ -1,7 +1,7 @@
 package main
 
-import "aoc/src/day03"
+import "aoc/src/day04"
 
 func main() {
-	day03.Solve()
+	day04.Solve()
 }

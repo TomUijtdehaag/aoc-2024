@@ -52,6 +52,6 @@ func part2(input string) int {
 func Solve() {
 	input := utils.ReadInput(3)
 
-	fmt.Printf("Day 2, Part 1: %v\n", part1(input))
-	fmt.Printf("Day 2, Part 2: %v\n", part2(input))
+	fmt.Printf("Day 3, Part 1: %v\n", part1(input))
+	fmt.Printf("Day 3, Part 2: %v\n", part2(input))
 }
